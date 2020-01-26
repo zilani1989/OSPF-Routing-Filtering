@@ -1,0 +1,35 @@
+hase 1 ::
+==========
+
+ip route 172.X.X.X 255.255.255.0 Tunnel1 5 name SERVER-ROUTE
+ip route 172.X.X.X 255.255.255.0 Tunnel0 15 name SERVER-ROUTE
+ip route 172.19.X.X 255.255.255.0 Tunnel0 name ICT-ROUTE
+ip route 172.19.X.X 255.255.255.0 Tunnel1 name ICT-ROUTE
+
+Phase 2 ::
+==========
+
+route-map tag-filter deny 10
+ match tag 130
+!
+route-map tag-filter permit 20
+ match tag 135
+
+Phase 3 ::
+==========
+
+access-list 135 dynamic static-map  permit ip any any
+access-list 130 deny ip any any
+
+Phase 4 ::
+==========
+router ospf 100
+distribute-list route-map tag-filter in
+
+Phase 5 ::
+=========
+
+Checking routing table and ping G/W
+
+
++++++++++++++++++++++++++++++++++++++++END+++++++++++++++++++++++++++++++
