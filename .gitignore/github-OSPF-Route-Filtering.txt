@@ -1,6 +1,5 @@
-hase 1 ::
+Phase 1 ::
 ==========
-
 ip route 172.X.X.X 255.255.255.0 Tunnel1 5 name SERVER-ROUTE
 ip route 172.X.X.X 255.255.255.0 Tunnel0 15 name SERVER-ROUTE
 ip route 172.19.X.X 255.255.255.0 Tunnel0 name ICT-ROUTE
